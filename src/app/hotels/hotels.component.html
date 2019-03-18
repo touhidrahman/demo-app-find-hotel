@@ -1,1 +1,11 @@
-{{ hotels$ | async | json }}
+<div class="hotels-list">
+    <div
+        *ngFor="let hotel of hotels$ | async"
+        class="hotels-list-item"
+    >
+        <div class="overview-card">
+            <h1>{{ hotel.name }}</h1>
+            <pre>{{ hotel | json }}</pre>
+        </div>
+    </div>
+</div>
