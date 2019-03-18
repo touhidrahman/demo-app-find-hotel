@@ -1,11 +1,23 @@
-<div class="hotels-list">
-    <div
-        *ngFor="let hotel of hotels$ | async"
-        class="hotels-list-item"
-    >
-        <div class="overview-card">
-            <h1>{{ hotel.name }}</h1>
-            <pre>{{ hotel | json }}</pre>
+<section class="content-container">
+    <div class="filter-sidebar"></div>
+    <div class="hotels-list">
+        <div
+            *ngFor="let hotel of hotels$ | async"
+            class="hotels-list-item"
+        >
+            <div class="overview-card">
+                <div class="card-image">
+                    <img
+                        [src]="hotel.images[0]"
+                        [alt]="hotel.name"
+                    >
+                </div>
+                <div class="card-content">
+                    <h3>{{ hotel.name }}</h3>
+                    <p>Rating {{ hotel.rating }}</p>
+                    <a [routerLink]="[ '/hotels', hotel.id ]">View Hotel</a>
+                </div>
+            </div>
         </div>
     </div>
-</div>
+</section>
