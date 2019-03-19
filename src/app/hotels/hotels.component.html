@@ -15,6 +15,7 @@
                 <div class="card-content">
                     <h3>{{ hotel.name }}</h3>
                     <p>Rating {{ hotel.rating }}</p>
+                    <p>Distance {{ hotel.distance_to_venue }}</p>
                     <a [routerLink]="[ '/hotels', hotel.id ]">View Hotel</a>
                 </div>
             </div>

@@ -1,5 +1,6 @@
 <div class="cover-image"></div>
 
 <div class="hotel-details">
-    <p>{{ (hotel$ | async).description }}</p>
+    <!-- <p>{{ (hotel$ | async).description }}</p> -->
+    <pre>{{ (rooms$ | async | json) }}</pre>
 </div>

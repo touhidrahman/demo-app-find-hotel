@@ -4,4 +4,5 @@ export interface Room {
     description?: string;
     maximum_occupancy?: number;
     price_in_usd?: number;
+    hotelId?: string;
 }
