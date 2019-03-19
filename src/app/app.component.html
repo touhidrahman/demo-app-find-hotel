@@ -1,1 +1,16 @@
-<router-outlet></router-outlet>
+<header>
+  <nav class="main-nav">
+    <ul>
+      <li>
+        <ul>
+          <li><a [routerLink]="[ '/' ]">Home</a></li>
+          <li><a [routerLink]="[ '/hotels' ]">Hotels</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+<div class="main-content">
+    <router-outlet></router-outlet>
+</div>

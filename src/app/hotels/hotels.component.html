@@ -1,6 +1,7 @@
-<section class="content-container">
-    <div class="filter-sidebar"></div>
-    <div class="hotels-list">
+<div class="hotels-list row">
+    <div class="column column-33"></div>
+
+    <div class="column">
         <div
             *ngFor="let hotel of hotels$ | async"
             class="hotels-list-item"
@@ -13,12 +14,11 @@
                     >
                 </div>
                 <div class="card-content">
-                    <h3>{{ hotel.name }}</h3>
+                    <h3><a [routerLink]="[ '/hotels', hotel.id ]">{{ hotel.name }}</a></h3>
                     <p>Rating {{ hotel.rating }}</p>
                     <p>Distance {{ hotel.distance_to_venue }}</p>
-                    <a [routerLink]="[ '/hotels', hotel.id ]">View Hotel</a>
                 </div>
             </div>
         </div>
     </div>
-</section>
+</div>

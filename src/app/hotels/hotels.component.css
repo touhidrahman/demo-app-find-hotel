@@ -1,20 +1,10 @@
-.content-container {
-    display: flex;
-    padding: 0 10px;
-}
-
-.filter-sidebar {
-    flex-basis: 40%;
-}
-
 .hotels-list {
-    display: flex;
-    flex-direction: column;
+    padding: 20px;
 }
 
 .overview-card {
     min-height: 100px;
-    border: 1px solid gray;
+    border: 1px solid pink;
     border-radius: 5px;
     padding: 10px;
     display: flex;

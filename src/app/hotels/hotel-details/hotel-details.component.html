@@ -1,6 +1,20 @@
-<div class="cover-image"></div>
+<div
+    class="cover-image"
+    [ngStyle]="{'background': 'url(' + (hotel$ | async).images[0] + ')'}"
+>
+</div>
 
-<div class="hotel-details">
-    <!-- <p>{{ (hotel$ | async).description }}</p> -->
-    <pre>{{ (rooms$ | async | json) }}</pre>
+<div class="hotel-details row">
+    <div class="column column-66">
+        <h1>{{ (hotel$ | async).name }}</h1>
+        <h2>Rating {{ (hotel$ | async).rating }}</h2>
+        <p>{{ (hotel$ | async).description }}</p>
+    </div>
+    <div class="column column-33">
+        <h2>Available Rooms</h2>
+        <div *ngFor="let room of (rooms$ | async); let i = index">
+            <!-- TODO: show only 2 rooms initially -->
+            {{ room.name }}
+        </div>
+    </div>
 </div>
