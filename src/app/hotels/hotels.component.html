@@ -1,7 +1,32 @@
-<div class="hotels-list row">
-    <div class="column column-33"></div>
+<div class="row">
+    <div class="column column-33 sidebar">
+        <h2>Filter</h2>
 
-    <div class="column">
+        <div>
+            <label>Maximum distance from venue</label>
+            <input [formControl]="distance" type="range" min="1" max="4001" step="100" [value]="distance.value" class="slider">
+            <small>{{ distance.value || 1000 }} meters</small>
+        </div>
+
+        <div>
+            <label>Hotel rating</label>
+            <input [formControl]="rating" type="range" min="1" max="5" step="1" [value]="rating.value" class="slider">
+            <small>{{ rating.value || 3 }} stars</small>
+        </div>
+
+        <div>
+            <label>Price category</label>
+            <select [formControl]="priceCategory">
+                <option value="low">Low price</option>
+                <option value="medium">Medium price</option>
+                <option value="high">High price</option>
+            </select>
+        </div>
+
+        <button (click)="onApplyFilters()" class="full-width-button">Apply Filters</button>
+    </div>
+
+    <div class="column hotels-list">
         <div
             *ngFor="let hotel of hotels$ | async"
             class="hotels-list-item"
@@ -16,7 +41,7 @@
                 <div class="card-content">
                     <h3><a [routerLink]="[ '/hotels', hotel.id ]">{{ hotel.name }}</a></h3>
                     <p>Rating {{ hotel.rating }}</p>
-                    <p>Distance {{ hotel.distance_to_venue }}</p>
+                    <p>Distance {{ hotel.distance_to_venue }} meters</p>
                 </div>
             </div>
         </div>

@@ -7,7 +7,7 @@ import { Order } from '../types/app.types';
 
 const BASE_URL = environment.apiURL + 'hotels';
 
-interface HotelFilter {
+export interface HotelFilter {
     rating?: { isGreaterThan?: boolean; value: number; sort?: boolean; order?: Order };
     distance_to_venue?: { isGreaterThan?: boolean; value: number; sort?: boolean; order?: Order };
     price_category?: { value: PriceCategory };

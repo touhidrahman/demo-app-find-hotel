@@ -7,7 +7,7 @@ import { Order } from '../types/app.types';
 
 const BASE_URL = environment.apiURL + 'rooms';
 
-interface RoomFilter {
+export interface RoomFilter {
     price_in_usd?: { isGreaterThan?: boolean; value: number; sort?: boolean; order?: Order };
     max_occupancy?: { isGreaterThan?: boolean; value: number; sort?: boolean; order?: Order };
 }

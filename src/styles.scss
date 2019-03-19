@@ -97,9 +97,29 @@ img {
     max-width: 100%;
 }
 
-footer {
-    margin: 0 auto;
-    max-width: 950px;
+button {
+    background-color: #e00966;
+    border: 0.1rem solid #a7054b;
+    border-radius: .4rem;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 700;
+    letter-spacing: .1rem;
+    line-height: 2.5rem;
+    padding: 0 3.0rem;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+button :focus,
+button:hover {
+    background-color: #606c76;
+    border-color: #606c76;
+    color: #fff;
+    outline: 0;
 }
 
 .row {
