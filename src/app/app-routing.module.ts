@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { HotelsComponent } from './hotels/hotels.component';
 import { HotelDetailsComponent } from './hotels/hotel-details/hotel-details.component';
 import { AdminComponent } from './admin/admin.component';
+import { CreateHotelComponent } from './hotels/create-hotel/create-hotel.component';
 
 const routes: Routes = [
     {
@@ -12,6 +13,10 @@ const routes: Routes = [
     {
         path: 'hotels',
         component: HotelsComponent,
+    },
+    {
+        path: 'hotels/new',
+        component: CreateHotelComponent,
     },
     {
         path: 'hotels/:id',

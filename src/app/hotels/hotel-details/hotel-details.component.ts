@@ -15,19 +15,26 @@ import { Order } from 'src/app/shared/types/app.types';
 export class HotelDetailsComponent implements OnInit {
     hotel$: Observable<Hotel>;
     rooms$: Observable<Array<Room>>;
+    loading = true;
 
     constructor(
         private hotelsService: HotelsService,
         private roomService: RoomService,
         private router: Router,
         private activatedRoute: ActivatedRoute,
-    ) {}
+    ) {
+        this.activatedRoute.paramMap.subscribe((params) => {
+            if (params) {
+                this.loading = false;
+                this.hotel$ = this.hotelsService.getHotel(params.get('id'));
+                this.rooms$ = this.roomService.getRoomsForHotel(
+                    params.get('id'),
+                );
+            }
+        });
+    }
 
     ngOnInit() {
-        this.activatedRoute.paramMap.subscribe((params) => {
-            this.hotel$ = this.hotelsService.getHotel(params.get('id'));
-            this.rooms$ = this.roomService.getRoomsForHotel(params.get('id'));
-        });
         // this.rooms$ = this.roomService.getRoomsWithFilter({
         //     price_in_usd: { value: 350, isGreaterThan: true, sort: true, order: Order.Descending },
         //     max_occupancy: { value: 2, isGreaterThan: true, sort: true, order: Order.Descending },

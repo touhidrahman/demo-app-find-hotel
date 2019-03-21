@@ -1,0 +1,32 @@
+.create-hotel {
+    padding: 20px;
+}
+
+.create-hotel-form div {
+    padding-bottom: .5rem;
+}
+
+input,
+textarea {
+    background: none;
+    padding: 7px;
+    width: 100%;
+    border: 1px solid pink;
+}
+
+input[type="checkbox"] {
+    width: 2em;
+    padding-right: 1rem;
+}
+
+select {
+    background: none;
+    padding: 4px;
+    width: 100%;
+    border-color: pink;
+}
+
+.full-width-button {
+    margin-top: 2em;
+    width: 100%;
+}

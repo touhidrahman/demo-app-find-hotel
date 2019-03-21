@@ -8,8 +8,18 @@ import { Order } from '../types/app.types';
 const BASE_URL = environment.apiURL + 'hotels';
 
 export interface HotelFilter {
-    rating?: { isGreaterThan?: boolean; value: number; sort?: boolean; order?: Order };
-    distance_to_venue?: { isGreaterThan?: boolean; value: number; sort?: boolean; order?: Order };
+    rating?: {
+        isGreaterThan?: boolean;
+        value: number;
+        sort?: boolean;
+        order?: Order;
+    };
+    distance_to_venue?: {
+        isGreaterThan?: boolean;
+        value: number;
+        sort?: boolean;
+        order?: Order;
+    };
     price_category?: { value: PriceCategory };
 }
 
@@ -28,6 +38,10 @@ export class HotelsService {
         return this.http.get<Hotel>(`${BASE_URL}/${id}`);
     }
 
+    createHotel(data: Hotel | Partial<Hotel>): Observable<Hotel> {
+        return this.http.post<Hotel>(`${BASE_URL}`, data);
+    }
+
     updateHotel(id: string, data: Hotel | Partial<Hotel>): Observable<Hotel> {
         return this.http.put<Hotel>(`${BASE_URL}/${id}`, data);
     }
@@ -43,23 +57,36 @@ export class HotelsService {
 
         if (filter && filter.rating) {
             let ratingFilter = 'rating';
-            filter.rating.isGreaterThan ? (ratingFilter += '_gte') : (ratingFilter += '_lte');
+            filter.rating.isGreaterThan
+                ? (ratingFilter += '_gte')
+                : (ratingFilter += '_lte');
             if (filter.rating.sort) {
                 sortItems.push('rating');
-                orderItems.push(filter.rating.order ? filter.rating.order : Order.Ascending);
+                orderItems.push(
+                    filter.rating.order ? filter.rating.order : Order.Ascending,
+                );
             }
             params = params.set(ratingFilter, filter.rating.value.toString());
         }
 
         if (filter && filter.distance_to_venue) {
             let distanceFilter = 'distance_to_venue';
-            filter.distance_to_venue.isGreaterThan ? (distanceFilter += '_gte') : (distanceFilter += '_lte');
+            filter.distance_to_venue.isGreaterThan
+                ? (distanceFilter += '_gte')
+                : (distanceFilter += '_lte');
             if (filter.distance_to_venue.sort) {
                 sortItems.push('distance_to_venue');
-                orderItems.push(filter.distance_to_venue.order ? filter.distance_to_venue.order : Order.Ascending);
+                orderItems.push(
+                    filter.distance_to_venue.order
+                        ? filter.distance_to_venue.order
+                        : Order.Ascending,
+                );
             }
 
-            params = params.set(distanceFilter, filter.distance_to_venue.value.toString());
+            params = params.set(
+                distanceFilter,
+                filter.distance_to_venue.value.toString(),
+            );
         }
 
         if (filter && filter.price_category) {

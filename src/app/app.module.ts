@@ -8,10 +8,22 @@ import { HttpClientModule } from '@angular/common/http';
 import { HotelsComponent } from './hotels/hotels.component';
 import { HotelDetailsComponent } from './hotels/hotel-details/hotel-details.component';
 import { AdminComponent } from './admin/admin.component';
+import { CreateHotelComponent } from './hotels/create-hotel/create-hotel.component';
 
 @NgModule({
-    declarations: [ AppComponent, HotelsComponent, HotelDetailsComponent, AdminComponent ],
-    imports: [ BrowserModule, AppRoutingModule, HttpClientModule, ReactiveFormsModule ],
+    declarations: [
+        AppComponent,
+        HotelsComponent,
+        HotelDetailsComponent,
+        AdminComponent,
+        CreateHotelComponent,
+    ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        ReactiveFormsModule,
+    ],
     providers: [],
     bootstrap: [ AppComponent ],
 })

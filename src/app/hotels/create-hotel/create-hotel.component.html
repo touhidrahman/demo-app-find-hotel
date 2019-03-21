@@ -1,0 +1,78 @@
+<div class="create-hotel">
+    <h1>Add a New Hotel</h1>
+
+    <div class="create-hotel-form" [formGroup]="hotel">
+        <div class="row">
+            <div class="column column-20">
+                <label>Name of hotel</label>
+            </div>
+            <div class="column">
+                <input type="text" formControlName="name">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="column column-20">
+                <label>Distance from venue</label>
+            </div>
+            <div class="column">
+                <input type="number" formControlName="distance_to_venue">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="column column-20">
+                <label>Rating</label>
+            </div>
+            <div class="column">
+                <input type="text" formControlName="rating">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="column column-20">
+                <label>Amenities</label>
+            </div>
+            <div class="column">
+                <div *ngFor="let amenity of hotel.controls['amenities'].controls; let i = index">
+                    <div>
+                        <input type="checkbox" [formControl]="amenity">
+                        <label>{{ amenitiesArr[i] }}</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="column column-20">
+                <label>Price category</label>
+            </div>
+            <div class="column">
+                <select formControlName="price_category">
+                    <option value="low">Low price</option>
+                    <option value="medium">Medium price</option>
+                    <option value="high">High price</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="column column-20">
+                <label>Description</label>
+            </div>
+            <div class="column">
+                <textarea rows="4" formControlName="description"></textarea>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="column column-20">
+            </div>
+            <div class="column">
+                <button (click)="onSaveHotel()">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<pre>{{ v | json }}</pre>

@@ -34,6 +34,7 @@
             <div class="overview-card">
                 <div class="card-image">
                     <img
+                        *ngIf="hotel && hotel.images"
                         [src]="hotel.images[0]"
                         [alt]="hotel.name"
                     >

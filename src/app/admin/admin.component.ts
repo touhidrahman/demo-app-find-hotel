@@ -14,6 +14,20 @@ export class AdminComponent implements OnInit {
     constructor(private hotelsService: HotelsService) {}
 
     ngOnInit() {
+        this.loadHotels();
+    }
+
+    onDeleteHotel(hotel: Hotel) {
+        // TODO: This will be a custom modal to confirm user actions. However, use simple alert for now
+        const confirm = window.confirm('Are you sure to delete this hotel?');
+        if (confirm) {
+            this.hotelsService.deleteHotel(hotel.id).subscribe((value) => {
+                this.loadHotels();
+            });
+        }
+    }
+
+    private loadHotels(): void {
         this.hotels$ = this.hotelsService.getHotels();
     }
 }

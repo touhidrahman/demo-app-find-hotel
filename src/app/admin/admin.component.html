@@ -13,9 +13,11 @@
                 <th>Actions</th>
             </tr>
             <tr *ngFor="let hotel of hotels$ | async">
-                <td>{{ hotel.name }}</td>
                 <td>
-                    <button class="mini-button">Delete</button>
+                    <a [routerLink]="[ '/hotels', hotel.id ]">{{ hotel.name }}</a>
+                </td>
+                <td>
+                    <button class="mini-button" (click)="onDeleteHotel(hotel)">Delete</button>
                 </td>
             </tr>
         </table>
