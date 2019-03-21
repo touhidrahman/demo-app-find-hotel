@@ -1,0 +1,23 @@
+<div class="admins">
+    <h1>Administration</h1>
+
+    <div class="action-buttons">
+        <a class="button" [routerLink]="['/hotels', 'new']">Add a hotel</a>
+    </div>
+
+    <div class="hotels-list">
+        <h2>Manage Hotels</h2>
+        <table>
+            <tr>
+                <th>Hotel</th>
+                <th>Actions</th>
+            </tr>
+            <tr *ngFor="let hotel of hotels$ | async">
+                <td>{{ hotel.name }}</td>
+                <td>
+                    <button class="mini-button">Delete</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

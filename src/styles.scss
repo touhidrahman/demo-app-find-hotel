@@ -97,7 +97,8 @@ img {
     max-width: 100%;
 }
 
-button {
+button,
+a.button {
     background-color: #e00966;
     border: 0.1rem solid #a7054b;
     border-radius: .4rem;
@@ -115,7 +116,9 @@ button {
 }
 
 button :focus,
-button:hover {
+a.button :focus,
+button :hover,
+a.button :hover {
     background-color: #606c76;
     border-color: #606c76;
     color: #fff;

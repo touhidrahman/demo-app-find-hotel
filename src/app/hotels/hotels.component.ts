@@ -21,9 +21,6 @@ export class HotelsComponent implements OnInit {
 
     ngOnInit() {
         this.hotels$ = this.hotelsService.getHotels();
-        // this.hotels$ = this.hotelsService.getHotels({
-        //     distance_to_venue: { value: 1500, sort: true, order: Order.Descending },
-        // });
     }
 
     onApplyFilters() {
