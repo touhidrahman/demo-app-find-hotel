@@ -23,8 +23,16 @@ const routes: Routes = [
         component: HotelDetailsComponent,
     },
     {
+        path: 'booking/:id',
+        component: HotelDetailsComponent, // TODO
+    },
+    {
         path: 'admin',
         component: AdminComponent,
+    },
+    {
+        path: '**',
+        component: HotelsComponent,
     },
 ];
 

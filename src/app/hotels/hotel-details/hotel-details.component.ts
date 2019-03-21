@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { HotelsService } from 'src/app/shared/services/hotels.service';
 import { RoomService } from 'src/app/shared/services/room.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Hotel } from 'src/app/shared/models/hotel';
-import { Observable } from 'rxjs';
 import { Room } from 'src/app/shared/models/room';
 import { Order } from 'src/app/shared/types/app.types';
 
@@ -12,10 +11,11 @@ import { Order } from 'src/app/shared/types/app.types';
     templateUrl: './hotel-details.component.html',
     styleUrls: [ './hotel-details.component.css' ],
 })
-export class HotelDetailsComponent implements OnInit {
-    hotel$: Observable<Hotel>;
-    rooms$: Observable<Array<Room>>;
+export class HotelDetailsComponent {
+    rooms: Array<Room> = [];
+    hotel: Hotel;
     loading = true;
+    roomsIndex = 0;
 
     constructor(
         private hotelsService: HotelsService,
@@ -23,21 +23,38 @@ export class HotelDetailsComponent implements OnInit {
         private router: Router,
         private activatedRoute: ActivatedRoute,
     ) {
-        this.activatedRoute.paramMap.subscribe((params) => {
+        this.activatedRoute.params.subscribe((params) => {
             if (params) {
-                this.loading = false;
-                this.hotel$ = this.hotelsService.getHotel(params.get('id'));
-                this.rooms$ = this.roomService.getRoomsForHotel(
-                    params.get('id'),
-                );
+                this.getHotel(params.id);
+                this.loadRooms(params.id);
             }
         });
     }
 
-    ngOnInit() {
-        // this.rooms$ = this.roomService.getRoomsWithFilter({
-        //     price_in_usd: { value: 350, isGreaterThan: true, sort: true, order: Order.Descending },
-        //     max_occupancy: { value: 2, isGreaterThan: true, sort: true, order: Order.Descending },
-        // });
+    getHotel(id: string) {
+        this.hotelsService.getHotel(id).subscribe((value) => {
+            this.hotel = value;
+            this.loading = false;
+        });
+    }
+
+    loadRooms(id: string) {
+        this.roomService
+            .getRoomsForHotel(
+                id,
+                {
+                    price_in_usd: {
+                        value: 0,
+                        isGreaterThan: true,
+                        sort: true,
+                        order: Order.Ascending,
+                    },
+                },
+                { start: this.roomsIndex, limit: 2 },
+            )
+            .subscribe((value) => {
+                this.rooms = this.rooms.concat(value);
+                this.roomsIndex += 2;
+            });
     }
 }

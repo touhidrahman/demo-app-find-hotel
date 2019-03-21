@@ -1,20 +1,37 @@
 <div
-    *ngIf="!loading && (hotel$ | async) && (hotel$ | async).images"
+    *ngIf="!loading && hotel && hotel.images"
     class="cover-image"
-    [ngStyle]="{'background': 'url(' + (hotel$ | async).images[0] + ')'}"
+    [ngStyle]="{'background': 'url(' + hotel.images[0] + ')'}"
 >
 </div>
 
-<div class="hotel-details row" *ngIf="!loading && (hotel$ | async)">
+<div
+    class="hotel-details row"
+    *ngIf="!loading && hotel"
+>
     <div class="column column-66">
-        <h1>{{ (hotel$ | async).name }}</h1>
-        <h2>Rating {{ (hotel$ | async).rating }}</h2>
-        <p>{{ (hotel$ | async).description || '(no description provided)' }}</p>
+        <h1>{{ hotel.name }}</h1>
+        <h2>Rating {{ hotel.rating }}</h2>
+        <p>{{ hotel.description || '(no description provided)' }}</p>
     </div>
     <div class="column column-33">
         <h2>Available Rooms</h2>
-        <div *ngFor="let room of (rooms$ | async); let i = index">
-            {{ room.name }}
+        <div class="rooms-list">
+            <div
+                *ngFor="let room of rooms; let i = index"
+                class="room-card"
+            >
+                <h3>{{ room.name | uppercase }}</h3>
+                <div>
+                    USD {{ room.price_in_usd }} per night
+                    <small>
+                        for {{ room.max_occupancy }} person (max)
+                    </small>
+                </div>
+                <a [routerLink]="[ '/booking', room.id ]">Book now</a>
+            </div>
+
+            <button (click)="loadRooms(hotel.id)">Load more rooms</button>
         </div>
     </div>
 </div>

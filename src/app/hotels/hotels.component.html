@@ -4,14 +4,30 @@
 
         <div>
             <label>Maximum distance from venue</label>
-            <input [formControl]="distance" type="range" min="1" max="4001" step="100" [value]="distance.value" class="slider">
-            <small>{{ distance.value || 1000 }} meters</small>
+            <input
+                [formControl]="distance"
+                type="range"
+                min="0"
+                max="4001"
+                step="100"
+                [value]="distance.value"
+                class="slider"
+            >
+            <small>{{ distance.value }} meters</small>
         </div>
 
         <div>
             <label>Hotel rating</label>
-            <input [formControl]="rating" type="range" min="1" max="5" step="1" [value]="rating.value" class="slider">
-            <small>{{ rating.value || 3 }} stars</small>
+            <input
+                [formControl]="rating"
+                type="range"
+                min="0"
+                max="5"
+                step="1"
+                [value]="rating.value"
+                class="slider"
+            >
+            <small>{{ rating.value }} stars</small>
         </div>
 
         <div>
@@ -23,7 +39,12 @@
             </select>
         </div>
 
-        <button (click)="onApplyFilters()" class="full-width-button">Apply Filters</button>
+        <button
+            (click)="onApplyFilters()"
+            class="full-width-button"
+        >
+            Apply Filters
+        </button>
     </div>
 
     <div class="column hotels-list">
