@@ -69,3 +69,8 @@ select {
     margin-top: 2em;
     width: 100%;
 }
+
+h1 {
+    margin-left: 20px;
+    margin-top: 2rem;
+}

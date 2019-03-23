@@ -1,0 +1,50 @@
+<div class="booking-details">
+    <h1>Booking Confirmation</h1>
+
+    <div class="hotel-info" *ngIf="hotel">
+        <div class="row">
+            <div class="column column-20">
+                <img [src]="hotel.images[0]" alt="Hotel image">
+            </div>
+            <div class="column hotel-info-basic">
+                <h2>{{ hotel.name }}</h2>
+                <p>Rating: {{ hotel.rating }} | Distance to conference: {{ hotel.distance_to_venue }} meters</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="booker-info" *ngIf="hotel && room">
+        <div class="row">
+            <div class="column column-20">
+                Guest
+            </div>
+            <div class="column">
+                <h3>John Doe</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="column column-20">
+                Booked room
+            </div>
+            <div class="column">
+                {{ room.name | uppercase }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="column column-20">
+                Check in
+            </div>
+            <div class="column">
+                {{ today | date }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="column column-20">
+                Check out
+            </div>
+            <div class="column">
+                {{ dayAfterTomorrow | date }}
+            </div>
+        </div>
+    </div>
+</div>

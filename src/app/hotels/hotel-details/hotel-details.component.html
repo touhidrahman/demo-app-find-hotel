@@ -13,25 +13,30 @@
         <h1>{{ hotel.name }}</h1>
         <h2>Rating {{ hotel.rating }}</h2>
         <p>{{ hotel.description || '(no description provided)' }}</p>
-    </div>
-    <div class="column column-33">
-        <h2>Available Rooms</h2>
-        <div class="rooms-list">
-            <div
-                *ngFor="let room of rooms; let i = index"
-                class="room-card"
-            >
-                <h3>{{ room.name | uppercase }}</h3>
-                <div>
-                    USD {{ room.price_in_usd }} per night
-                    <small>
-                        for {{ room.max_occupancy }} person (max)
-                    </small>
-                </div>
-                <a [routerLink]="[ '/booking', room.id ]">Book now</a>
-            </div>
 
-            <button (click)="loadRooms(hotel.id)">Load more rooms</button>
+        <h2>Photos</h2>
+        <div class="row row-wrap">
+            <div class="column column-33" *ngFor="let image of hotel.images">
+                <img [src]="image">
+            </div>
         </div>
+    </div>
+    <div class="column rooms-list">
+        <h2>Available Rooms</h2>
+        <div
+            *ngFor="let room of rooms; let i = index"
+            class="room-card"
+        >
+            <h3>{{ room.name | uppercase }}</h3>
+            <div>
+                USD {{ room.price_in_usd }} per night
+                <small>
+                    for {{ room.max_occupancy }} person (max)
+                </small>
+            </div>
+            <a [routerLink]="[ '/booking', room.id ]">Book now</a>
+        </div>
+
+        <button (click)="loadRooms(hotel.id)">Load more rooms</button>
     </div>
 </div>

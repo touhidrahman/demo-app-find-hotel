@@ -17,3 +17,8 @@
     padding: .3rem;
     border: 1px solid pink;
 }
+
+.rooms-list {
+    padding-left: 20px;
+    padding-right: 20px;
+}
