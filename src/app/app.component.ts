@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'trv-venue-hotel-client';
+  title = 'demo-app-find-hotel';
 }
